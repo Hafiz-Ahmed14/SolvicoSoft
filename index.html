@@ -6,7 +6,7 @@
     <link rel="icon" type="image/x-icon" href="logo.png">
     <title>HaMoSoft | Software Agency</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -32,6 +32,7 @@
             color: var(--dark);
             overflow-x: hidden;
             background-color: #fefefe;
+            scroll-behavior: smooth;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -144,6 +145,9 @@
             transform: perspective(1000px) rotateY(-5deg);
             transition: all 0.5s ease;
             border: 8px solid white;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
         }
         
         .hero-img:hover {
@@ -664,11 +668,13 @@
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(0,0,0,0.1);
             margin-bottom: 30px;
+            height: 100%;
         }
         
         .gif-container img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
         
@@ -707,6 +713,62 @@
         
         .process-step:last-child::after {
             display: none;
+        }
+        
+        /* Modern additions */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+        
+        .text-gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .shadow-soft {
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.1);
+        }
+        
+        .modern-img-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        
+        .modern-img-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(108, 99, 255, 0.1), rgba(77, 68, 219, 0.2));
+            z-index: 1;
+        }
+        
+        .modern-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .modern-img-container:hover img {
+            transform: scale(1.05);
         }
         
         @media (max-width: 992px) {
@@ -830,7 +892,9 @@
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Software Development" class="img-fluid hero-img animate__animated animate__fadeIn animate__delay-1s">
+                    <div class="modern-img-container">
+                        <img src="https://github.com/Hafiz-Ahmed14/MyPortfolio/blob/59c90d60f6f27ff332836ef001a3fe0dc3c9c1a0/1stprice.png" alt="Software Development" class="hero-img animate__animated animate__fadeIn animate__delay-1s">
+                    </div>
                 </div>
             </div>
         </div>
@@ -879,8 +943,8 @@
             </div>
             <div class="row mt-5 align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <div class="gif-container">
-                        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2F1d3V4eGJ0eGQ0b2JzYjVzZ3JzZzV5eW9wY3V1dGx4Y3JtZ2JtZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26n7b7PjSOZJwVCmY/giphy.gif" alt="Coding Animation">
+                    <div class="modern-img-container hover-scale">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Our Team">
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
@@ -889,10 +953,11 @@
                     <p>Our approach combines technical excellence with creative problem-solving. We don't just write code - we understand your business needs and deliver solutions that drive real results.</p>
                     <div class="tech-stack">
                         <div class="tech-item">React</div>
-                        <div class="tech-item">Bootstrap</div>
-                        <div class="tech-item">JavaScripts</div>
-                        <div class="tech-item">Dotnet</div>
-                        <div class="tech-item">MySql</div>
+                        <div class="tech-item">Node.js</div>
+                        <div class="tech-item">JavaScript</div>
+                        <div class="tech-item">.NET</div>
+                        <div class="tech-item">MySQL</div>
+                        <div class="tech-item">MongoDB</div>
                     </div>
                 </div>
             </div>
@@ -957,13 +1022,12 @@
                 <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-sliders-h"></i> <!-- Control panel-like icon -->
+                            <i class="fas fa-sliders-h"></i>
                         </div>
                         <h3>Control Panel</h3>
                         <p>Powerful and intuitive control panel to manage users, content, and system configurations with ease.</p>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -1026,8 +1090,8 @@
             </div>
             <div class="row mt-5">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <div class="gif-container">
-                        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWJ1YzV4cGJhZ3l1bWt4dWJ4cGZ0d3ZtZ3N5bGx1bGd3b3ZzZ2VxZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QpVUMRUJGokfqXyfa1/giphy.gif" alt="Development Process">
+                    <div class="modern-img-container hover-scale">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Development Process">
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
@@ -1138,7 +1202,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7" data-aos="fade-left">
-                    <form>
+                    <form id="contactForm">
                         <div class="row">
                             <div class="col-md-6">
                                 <input type="text" class="form-control" placeholder="Your Name" required>
@@ -1219,8 +1283,10 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS (Animate On Scroll) -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -1230,82 +1296,133 @@
             easing: 'ease-in-out',
             once: true
         });
-        
+
         // Navbar scroll effect
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 100) {
-                $('.navbar').addClass('scrolled');
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
             } else {
-                $('.navbar').removeClass('scrolled');
+                navbar.classList.remove('scrolled');
             }
         });
-        
+
         // Smooth scrolling for navigation links
-        $('a[href*="#"]').on('click', function(e) {
-            e.preventDefault();
-            
-            $('html, body').animate(
-                {
-                    scrollTop: $($(this).attr('href')).offset().top - 70,
-                },
-                500,
-                'easeInOutExpo'
-            );
-        });
-        
-        // Back to top button
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 300) {
-                $('.back-to-top').addClass('active');
-            } else {
-                $('.back-to-top').removeClass('active');
-            }
-        });
-        
-        $('.back-to-top').on('click', function(e) {
-            e.preventDefault();
-            $('html, body').animate({scrollTop: 0}, '500', 'easeInOutExpo');
-        });
-        
-        // Animate stats counter
-        $(window).scroll(function() {
-            $('.stat-number').each(function() {
-                if ($(this).isInViewport()) {
-                    if (!$(this).hasClass('counted')) {
-                        $(this).addClass('counted');
-                        var $this = $(this);
-                        var countTo = $this.attr('data-count');
-                        $({ countNum: 0 }).animate({
-                            countNum: countTo
-                        }, {
-                            duration: 2000,
-                            easing: 'swing',
-                            step: function() {
-                                $this.text(Math.floor(this.countNum));
-                            },
-                            complete: function() {
-                                $this.text(this.countNum);
-                            }
-                        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        window.location.hash = targetId;
                     }
                 }
             });
         });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Stats counter animation
+        function animateValue(el, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                el.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        function initStatsCounter() {
+            const statsSection = document.querySelector('.stats');
+            if (!statsSection) return;
+
+            // Create observer to detect when stats section is in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !statsSection.classList.contains('animated')) {
+                        statsSection.classList.add('animated');
+                        
+                        // Animate each counter
+                        document.querySelectorAll('.stat-number').forEach((el, index) => {
+                            const countTo = parseInt(el.getAttribute('data-count'));
+                            animateValue(el, 0, countTo, 2000);
+                        });
+                        
+                        // Stop observing after animation starts
+                        observer.unobserve(statsSection);
+                    }
+                });
+            }, {
+                threshold: 0.5 // Trigger when 50% of element is visible
+            });
+
+            // Start observing the stats section
+            observer.observe(statsSection);
+        }
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+
+        // Mobile menu close when clicking a link
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarNav = document.querySelector('#navbarNav');
+        const navLinks = document.querySelectorAll('.nav-link');
         
-        // Check if element is in viewport
-        $.fn.isInViewport = function() {
-            var elementTop = $(this).offset().top;
-            var elementBottom = elementTop + $(this).outerHeight();
-            var viewportTop = $(window).scrollTop();
-            var viewportBottom = viewportTop + $(window).height();
-            return elementBottom > viewportTop && elementTop < viewportBottom;
-        };
-        
-        // Initialize tooltips
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navbarNav.classList.contains('show')) {
+                    navbarToggler.click(); // This will close the mobile menu
+                }
+            });
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initStatsCounter();
         });
     </script>
+
 </body>
 </html>

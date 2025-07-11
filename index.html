@@ -279,7 +279,7 @@
         
         .portfolio-img {
             width: 100%;
-            height: 280px;
+            height: 245px;
             object-fit: cover;
             transition: all 0.5s ease;
         }
@@ -747,6 +747,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            height: 100%;
         }
         
         .modern-img-container::before {
@@ -771,6 +772,59 @@
             transform: scale(1.05);
         }
         
+        /* Fixed Process Image Height */
+        .process-img-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .process-img-container .modern-img-container {
+            width: 100%;
+            height: 700px; /* Fixed height for process image */
+        }
+        
+        /* Contact Section Fixes */
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-info-content p {
+            margin-bottom: 0;
+        }
+        
+        /* Form Input Fixes */
+        #contactForm .row {
+            margin-bottom: 20px;
+        }
+        
+        #contactForm .col-md-6 {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 2.8rem;
@@ -782,6 +836,10 @@
             
             .stat-item {
                 margin-bottom: 30px;
+            }
+            
+            .process-img-container .modern-img-container {
+                height: 400px;
             }
         }
         
@@ -816,6 +874,20 @@
                 height: 50px;
                 font-size: 20px;
             }
+            
+            .contact-info-item {
+                flex-direction: column;
+            }
+            
+            .contact-info-icon {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+            
+            .process-img-container .modern-img-container {
+                height: 350px;
+                margin-bottom: 30px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -831,6 +903,10 @@
             
             .btn + .btn {
                 margin-left: 0;
+            }
+            
+            .process-img-container .modern-img-container {
+                height: 250px;
             }
         }
     </style>
@@ -944,20 +1020,35 @@
             <div class="row mt-5 align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="modern-img-container hover-scale">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Our Team">
+                        <img src="about hamosoft.png" alt="Our Team">
                     </div>
+                
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <h3>Who We Are</h3>
-                    <p>HaMoSoft is a dynamic software development agency founded in 2020 by Hafiz and Momo, two passionate developers with a vision to create meaningful digital solutions. We've grown from a small team to a full-service agency serving clients worldwide.</p>
-                    <p>Our approach combines technical excellence with creative problem-solving. We don't just write code - we understand your business needs and deliver solutions that drive real results.</p>
+                    <h3 class="mb-4">Who We Are</h3>
+                    <p style="text-align: justify;">  
+                        HaMoSoft is a promising software development agency founded in 2024 by Hafiz and Momo, two passionate developers on a mission to craft innovative digital solutions. As a startup, we combine fresh ideas with technical expertise to deliver tailored tools that help businesses thrive. Though we're new, our commitment to quality and client-centric approach sets us apart—every project is an opportunity to build trust and prove our potential.  
+                    </p>  
+
+                    <p style="text-align: justify;">  
+                        We believe great software stems from understanding your unique challenges. Beyond writing code, we focus on solving problems creatively, ensuring our solutions are scalable, user-friendly, and aligned with your goals. Whether it's a mobile app, web platform, or custom system, we prioritize clarity, collaboration, and cutting-edge technology to turn your vision into reality.  
+                    </p>  
+
+                    <p style="text-align: justify;">  
+                        As a young and agile team, we embrace flexibility and transparency. Our small size is our strength—it allows us to adapt quickly, maintain close communication, and dedicate personalized attention to each project. Partner with us, and let's grow together; your success is the foundation of our journey.  
+                    </p>  
+
                     <div class="tech-stack">
-                        <div class="tech-item">React</div>
-                        <div class="tech-item">Node.js</div>
-                        <div class="tech-item">JavaScript</div>
-                        <div class="tech-item">.NET</div>
-                        <div class="tech-item">MySQL</div>
+                        <div class="tech-item"><i class="fab fa-react"></i> React</div>
+                        <div class="tech-item"><i class="fab fa-node-js"></i> Node.js</div>
+                        <div class="tech-item"><i class="fab fa-js-square"></i> JavaScript</div>
+                        <div class="tech-item"><i class="fab fa-microsoft"></i> .NET</div>
+                        <div class="tech-item"><i class="fas fa-database"></i> MySQL</div>
+                        <div class="tech-item"><i class="fab fa-html5"></i> HTML</div>
+                        <div class="tech-item"><i class="fab fa-css3-alt"></i> CSS</div>
+                        <div class="tech-item"><i class="fab fa-bootstrap"></i> Bootstrap</div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -987,8 +1078,8 @@
                         <div class="feature-icon">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h3>Mobile View</h3>
-                        <p>Cross-platform mobile applications that provide seamless user experiences on both iOS and Android devices.</p>
+                        <h3>Android View</h3>
+                        <p>Proficiency in Android View Development with Responsive Design Implementation</p>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
@@ -1037,7 +1128,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h2 class="section-title">Our Portfolio</h2>
-                    <p class="lead">Explore some of our recent projects that showcase our expertise and commitment to quality.</p>
+                    <p class="lead">Explore some of our completed projects that showcase our expertise and commitment to quality.</p>
                 </div>
             </div>
             <div class="row mt-5">
@@ -1047,7 +1138,7 @@
                         <div class="portfolio-overlay">
                             <h3>VitaCraft</h3>
                             <p>A dynamic CV generator that helps users create professional resumes in minutes with customizable templates.</p>
-                            <a href="#" class="btn btn-outline-light mt-3">View Details</a>
+                            <a href="cvsite.html" class="btn btn-outline-light mt-3">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -1057,17 +1148,17 @@
                         <div class="portfolio-overlay">
                             <h3>HMMS</h3>
                             <p>Hall Meal Management System designed to streamline meal planning, ordering, and management for residential halls.</p>
-                            <a href="#" class="btn btn-outline-light mt-3">View Details</a>
+                            <a href="hmms.html" class="btn btn-outline-light mt-3">View Details</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
                     <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="OBE Based" class="portfolio-img">
+                        <img src="obe image.png" alt="OBE Based" class="portfolio-img">
                         <div class="portfolio-overlay">
                             <h3>OBE Based</h3>
                             <p>An outcome-based education platform that helps institutions track and measure learning outcomes effectively.</p>
-                            <a href="#" class="btn btn-outline-light mt-3">View Details</a>
+                            <a href="ObeBased.html" class="btn btn-outline-light mt-3">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -1089,8 +1180,10 @@
             </div>
             <div class="row mt-5">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <div class="modern-img-container hover-scale">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Development Process">
+                    <div class="process-img-container">
+                        <div class="modern-img-container hover-scale">
+                            <img src="process.png" alt="Development Process">
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
@@ -1141,7 +1234,7 @@
                         <p class="text-primary">Founder & Lead Developer</p>
                         <p>With over 1 year of experience in software development, Hafiz specializes in architecting scalable solutions and leading development teams. His technical expertise spans multiple programming languages and frameworks.</p>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-briefcase"></i></a>
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-github"></i></a>
                         </div>
@@ -1154,9 +1247,9 @@
                         <p class="text-primary">Co-Founder & Developer</p>
                         <p>Momo brings a user-centered design approach to every project, ensuring our applications are not just functional but delightful to use. With a background in both design and development, she bridges the gap between aesthetics and technology.</p>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-briefcase"></i></a>
                             <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1179,25 +1272,37 @@
             <div class="row mt-5">
                 <div class="col-lg-5 mb-4" data-aos="fade-right">
                     <div class="contact-info">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h3>Location</h3>
+                                <p>Bangladesh Army University of Engineering & Technology</p>
+                                <p>Qadirabad Cantonment, Natore</p>
+                            </div>
                         </div>
-                        <h3>Our Location</h3>
-                        <p>Bangladesh Army University of Engineering & Technology</p>
-                        <p>Qadirabad Cantonment, Natore</p>
                         
-                        <div class="contact-icon mt-4">
-                            <i class="fas fa-envelope"></i>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h3>Email Us</h3>
+                                <p>hafizahmed373908@gmail.com</p>
+                                <p>support@hafizmomo.com</p>
+                            </div>
                         </div>
-                        <h3>Email Us</h3>
-                        <p>info@hafizmomo.com</p>
-                        <p>support@hafizmomo.com</p>
                         
-                        <div class="contact-icon mt-4">
-                            <i class="fas fa-phone-alt"></i>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h3>Call Us</h3>
+                                <p>+880 1906 373908</p>
+                            </div>
                         </div>
-                        <h3>Call Us</h3>
-                        <p>+880 1906 373908</p>
                     </div>
                 </div>
                 <div class="col-lg-7" data-aos="fade-left">

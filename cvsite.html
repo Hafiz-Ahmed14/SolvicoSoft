@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitacraft - Professional CV Builder</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #2c3e50;
+            --accent-color: #1cc88a;
+            --light-color: #f8f9fc;
+            --dark-color: #5a5c69;
+        }
+        
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            color: var(--secondary-color);
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #224abe);
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.2;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2e59d9;
+            border-color: #2653d4;
+        }
+        
+        .btn-success {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .btn-success:hover {
+            background-color: #17a673;
+            border-color: #169b6b;
+        }
+        
+        .btn-outline-light:hover {
+            color: var(--secondary-color);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1.5rem 0 rgba(58, 59, 69, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .template-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+            border: 1px solid #e3e6f0;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1.5rem 0 rgba(58, 59, 69, 0.2);
+        }
+        
+        .template-header {
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 1px solid #e3e6f0;
+        }
+        
+        .template-body {
+            padding: 1.5rem;
+        }
+        
+        .template-preview {
+            background-color: #f8f9fc;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .template-preview img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border: 1px solid #e3e6f0;
+            border-radius: 3px;
+        }
+        
+        .template-points {
+            padding-left: 1rem;
+        }
+        
+        .template-points li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), #224abe);
+            color: white;
+            padding: 4rem 0;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.2;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .steps-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-links h5 {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        /* Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Hero Image Adjustment */
+        .hero-image-container {
+            height: 300px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .hero-image-container {
+                height: 200px;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span>Vitacraft</span> - Professional CV Builder
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#templates">Templates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-primary ms-lg-3">Visit VitaCraft</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Craft Your Perfect Resume in Minutes</h1>
+                    <p class="hero-subtitle">Stand out from the crowd with professionally designed templates tailored for your industry.</p>
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="#" class="btn btn-light btn-lg">Start Building - It's Free</a>
+                        <a href="#templates" class="btn btn-outline-light btn-lg">View Templates</a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                       
+                        <div class="ms-3">
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-white ms-1">4.5/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="hero-image-container floating">
+                        <img src="cvsites.png" alt="Resume Example">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Why Choose Vitacraft?</h2>
+            <p class="text-center mb-5">Create a resume that gets you noticed by employers and recruiters</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>Smart Design</h3>
+                        <p>Our templates are designed by professionals to highlight your strengths and make your resume stand out.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>ATS Optimized</h3>
+                        <p>All our templates are optimized to pass through Applicant Tracking Systems used by most companies.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <h3>Customizable</h3>
+                        <p>Easily customize colors, fonts, and layouts to match your personal brand and style.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud-download-alt"></i>
+                        </div>
+                        <h3>Multiple Formats</h3>
+                        <p>Download your resume in PDF, Word, or plain text formats with a single click.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Content Suggestions</h3>
+                        <p>Get expert-written phrases and bullet points tailored to your industry and experience level.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Create and edit your resume from any device, anytime, anywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section id="templates" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Professional Templates</h2>
+            <p class="text-center mb-5">Choose from our collection of modern, clean, and professional designs</p>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="template-card">
+                        <div class="template-header">
+                            Modern Executive
+                        </div>
+                        <div class="template-body">
+                            <div class="template-preview">
+                                <img src="https://images.unsplash.com/photo-1586282391129-76a746f27ea4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Modern Executive Template">
+                            </div>
+                            <ul class="template-points">
+                                <li>Clean, professional layout</li>
+                                <li>Emphasizes experience and achievements</li>
+                                <li>Perfect for corporate environments</li>
+                                <li>ATS-friendly format</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="template-card">
+                        <div class="template-header">
+                            Creative Minimalist
+                        </div>
+                        <div class="template-body">
+                            <div class="template-preview">
+                                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Creative Minimalist Template">
+                            </div>
+                            <ul class="template-points">
+                                <li>Modern, stylish design</li>
+                                <li>Great for creative professionals</li>
+                                <li>Showcases portfolio work</li>
+                                <li>Balances text and white space</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="template-card">
+                        <div class="template-header">
+                            Academic Professional
+                        </div>
+                        <div class="template-body">
+                            <div class="template-preview">
+                                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Academic Professional Template">
+                            </div>
+                            <ul class="template-points">
+                                <li>Formal academic style</li>
+                                <li>Highlights publications and research</li>
+                                <li>Detailed education section</li>
+                                <li>Ideal for PhDs and researchers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="steps-section">
+        <div class="container">
+            <h2 class="text-center section-title">How Vitacraft Works</h2>
+            <p class="text-center mb-5">Create your perfect resume in just a few simple steps</p>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Choose Your Template</h3>
+                        <p>Select from our professionally designed templates that match your industry and personal style.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Fill In Your Details</h3>
+                        <p>Our easy-to-use editor guides you through entering your work experience, education, and skills.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Customize & Enhance</h3>
+                        <p>Tailor your resume with our expert suggestions and customize the design to your liking.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Download & Apply</h3>
+                        <p>Download your polished resume and start applying for your dream job with confidence.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 mb-4">
+                    <div class="video-container">
+                        <iframe src="#" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h3>Watch Our Quick Tutorial</h3>
+                    <p>See how easy it is to create a professional resume with Vitacraft in just a few minutes. Our intuitive interface guides you through the process step by step.</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i> No design skills required</li>
+                        <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i> Real-time preview of your resume</li>
+                        <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i> Save and edit anytime</li>
+                        <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i> Multiple versions for different jobs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container text-center position-relative">
+            <h2 class="cta-title">Ready to Build Your Winning Resume?</h2>
+            <p class="lead mb-4">Join over 100 professionals who got hired with Vitacraft resumes</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="btn btn-light btn-lg px-4">Get Started - It's Free</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>About Vitacraft</h5>
+                    <p>Vitacraft is a professional resume builder designed to help job seekers create impressive resumes that get results. Our mission is to make professional resume creation accessible to everyone.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#templates">Templates</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#">Resume Writing Guide</a></li>
+                        <li><a href="#">Cover Letter Templates</a></li>
+                        <li><a href="#">Interview Tips</a></li>
+                        <li><a href="#">Career Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> BAEUT, Qadirabad, Natore</li>
+                        <li><i class="fas fa-phone me-2"></i> +88 01906 373908</li>
+                        <li><i class="fas fa-envelope me-2"></i> support@vitacraft.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                <p>&copy; 2025 Vitacraft - Professional CV Builder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+        
+        // Video modal functionality
+        const videoContainers = document.querySelectorAll('.video-container');
+        videoContainers.forEach(container => {
+            container.addEventListener('click', function(e) {
+                if (e.target.tagName === 'IFRAME') return;
+                const video = this.querySelector('iframe');
+                if (video) {
+                    const modal = document.createElement('div');
+                    modal.className = 'modal fade';
+                    modal.id = 'videoModal';
+                    modal.setAttribute('tabindex', '-1');
+                    modal.innerHTML = `
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Vitacraft Tutorial</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="${video.src}" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+                    const videoModal = new bootstrap.Modal(modal);
+                    videoModal.show();
+                    
+                    modal.addEventListener('hidden.bs.modal', function() {
+                        document.body.removeChild(modal);
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-card, .template-card, .step-card, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Set initial state for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.feature-card, .template-card, .step-card, .testimonial-card');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Trigger animation on load for elements in view
+            animateOnScroll();
+        });
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>

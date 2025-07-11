@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMMS - Hall Meal Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-color);
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white;
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        .btn-outline-light:hover {
+            color: var(--secondary-color);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            color: var(--dark-color);
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* New Role Section Styles */
+        .role-section {
+            background-color: white;
+            border-radius: 0.35rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+        
+        .role-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 600;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .role-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .role-body {
+            padding: 2rem;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-radius: 0.35rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.75rem;
+        }
+        
+        .feature-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-color);
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 0;
+            margin-top: 3rem;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-links h5 {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span>HMMS</span> - Hall Meal Management System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#roles">Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <a href="https://bauet-hmms.runasp.net/bauet/home" class="btn btn-outline-light ms-lg-3">Visit BAUET-HMMS</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title">Revolutionizing Hall Meal Management</h1>
+            <p class="hero-subtitle">Streamline your hall's meal operations with our comprehensive management system</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#features" class="btn btn-primary btn-lg">Explore Features</a>
+                <a href="#roles" class="btn btn-outline-light btn-lg">View Demos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Key Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Meal Scheduling</h3>
+                        <p>Easily create and manage meal schedules for the entire semester with our intuitive interface.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Role-based Access</h3>
+                        <p>Different access levels for students, staff, tutors, and hall provost with appropriate permissions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3>Real-time Analytics</h3>
+                        <p>Get insights into meal consumption patterns, preferences, and financial reports.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Payment Integration</h3>
+                        <p>Seamless payment processing for meal plans with multiple payment options.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Automated Notifications</h3>
+                        <p>Automatic alerts for meal changes, payment deadlines, and special events.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Access all features from any device with our responsive design.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roles Section - Redesigned -->
+    <section id="roles" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Role-based Features</h2>
+            <p class="section-subtitle">See how HMMS works for different user roles in our hall community</p>
+            
+            <!-- Student Portal -->
+            <div class="role-section fade-in">
+                <div class="role-header">
+                    <i class="fas fa-user-graduate role-icon"></i>
+                    Student Portal
+                </div>
+                <div class="role-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="video-container">
+                                <iframe src="#" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3>Features for Students:</h3>
+                            <ul class="feature-list">
+                                <li>View and select daily meal</li>
+                                <li>Track meal credits and balance</li>
+                                <li>Submit special requests if forgot meal on/off</li>
+                                <li>View meal calendar and announcements</li>
+                                <li>Give feedback and ratings for meal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- House Tutor Portal -->
+            <div class="role-section fade-in">
+                <div class="role-header">
+                    <i class="fas fa-user-tie role-icon"></i>
+                    House Tutor Portal
+                </div>
+                <div class="role-body">
+                    <div class="row">
+                        <div class="col-lg-6 order-lg-2">
+                            <div class="video-container">
+                                <iframe src="#" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <h3>Features for House Tutors:</h3>
+                            <ul class="feature-list">
+                                <li>Approve student meal requests</li>
+                                <li>Monitor student meal participation</li>
+                                <li>Generate reports hall meal cost</li>
+                                <li>Communicate with hall provost</li>
+                                <li>View student meal cost</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Staff Portal -->
+            <div class="role-section fade-in">
+                <div class="role-header">
+                    <i class="fas fa-utensils role-icon"></i>
+                    Staff Portal
+                </div>
+                <div class="role-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="video-container">
+                                <iframe src="#" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3>Features for Staff:</h3>
+                            <ul class="feature-list">
+                                <li>Manage daily meal preparation</li>
+                                <li>Track inventory and supplies</li>
+                                <li>View everyday student meal on/off list</li>
+                                <li>Create Impressive Meal Plan</li>
+                                <li>Add Daily, Month Meal Cost</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hall Provost Portal -->
+            <div class="role-section fade-in">
+                <div class="role-header">
+                    <i class="fas fa-user-shield role-icon"></i>
+                    Hall Provost Portal
+                </div>
+                <div class="role-body">
+                    <div class="row">
+                        <div class="col-lg-6 order-lg-2">
+                            <div class="video-container">
+                                <iframe src="#" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <h3>Features for Hall Provost:</h3>
+                            <ul class="feature-list">
+                                <li>Overall meal plan management</li>
+                                <li>Financial oversight and reporting</li>
+                                <li>Approval of special requests</li>
+                                <li>System configuration</li>
+                                <li>User management and permissions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">What Our Users Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "HMMS has transformed how we manage meals in our hall. The automated scheduling and reporting save us hours of work each week."
+                        </div>
+                        <div class="testimonial-author">Rumana Barsha</div>
+                        <div class="testimonial-role">Hall Provost, Bonolota Hall</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "As a house tutor, I appreciate how easy it is to track student meal participation and address any issues quickly through the system."
+                        </div>
+                        <div class="testimonial-author">Readonal Haque</div>
+                        <div class="testimonial-role">House Tutor, Boral Hall</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "As a student, I appreciate being able to manage my meals from my phone. It saves me so much time!"
+                        </div>
+                        <div class="testimonial-author">Marzia Mahorin Khan Momo</div>
+                        <div class="testimonial-role">Student, Bonolota Hall</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container text-center">
+            <h2 class="cta-title">Ready to Transform Your Hall's Meal Management?</h2>
+            <p class="lead mb-4">Join dozens of halls already benefiting from HMMS</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="btn btn-light btn-lg">Request Full Demo</a>
+                <a href="#" class="btn btn-outline-light btn-lg">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>About HMMS</h5>
+                    <p>Hall Meal Management System is a comprehensive solution designed to streamline meal operations in educational halls and dormitories.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#roles">Demos</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">System Status</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> BAUET, Qadirabad Natore</li>
+                        <li><i class="fas fa-phone me-2"></i> +88 01906 373908</li>
+                        <li><i class="fas fa-envelope me-2"></i> hmms@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                <p>&copy; 2025 HMMS - Hall Meal Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        // Run animation check on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Video modal functionality
+        const roleSections = document.querySelectorAll('.role-section');
+        roleSections.forEach(section => {
+            section.addEventListener('click', function(e) {
+                if (e.target.tagName === 'IFRAME' || e.target.closest('a')) return;
+                
+                const video = this.querySelector('iframe');
+                if (video) {
+                    const roleTitle = this.querySelector('.role-header').textContent.trim();
+                    const modal = document.createElement('div');
+                    modal.className = 'modal fade';
+                    modal.id = 'videoModal';
+                    modal.setAttribute('tabindex', '-1');
+                    modal.innerHTML = `
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">${roleTitle} Demo</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="${video.src}" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+                    const videoModal = new bootstrap.Modal(modal);
+                    videoModal.show();
+                    
+                    modal.addEventListener('hidden.bs.modal', function() {
+                        document.body.removeChild(modal);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
